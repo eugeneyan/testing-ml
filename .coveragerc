@@ -1,0 +1,4 @@
+[report]
+omit=src/utils/*
+fail_under=100
+show_missing=True
