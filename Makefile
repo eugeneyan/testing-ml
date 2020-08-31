@@ -15,7 +15,7 @@ clean-test:
 clean: clean-pyc clean-test
 
 test: clean
-	poetry run py.test tests --cov-config=.coveragerc --cov=src
+	poetry run py.test tests --cov-config=.coveragerc --cov=src  --cov-report=term-missing
 
 mypy:
 	poetry run mypy src
