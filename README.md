@@ -1,6 +1,6 @@
 # testing-ml
 
-Examples on how to test machine learning systems. Inspired by this [article](https://www.jeremyjordan.me/testing-ml/); accompanying article coming 2020-09-06.
+Examples on how to test machine learning systems. Inspired by [@jeremyjordan](https://twitter.com/jeremyjordan)'s [article](https://www.jeremyjordan.me/testing-ml/); accompanying article coming 2020-09-06.
 
 ![Tests](https://github.com/eugeneyan/testing-ml/workflows/Tests/badge.svg?branch=master) [![codecov](https://codecov.io/gh/eugeneyan/testing-ml/branch/master/graph/badge.svg)](https://codecov.io/gh/eugeneyan/testing-ml)
 
