@@ -132,7 +132,7 @@ def test_dt_overfit(dummy_feats_and_labels, dummy_titanic):
     assert auc_train > 0.99, 'AUC ROC on train should be > 0.99'
 
 
-# Check if additional tree depth increases accuracy
+# Check if additional tree depth increases accuracy and AUC ROC
 def test_dt_increase_acc(dummy_titanic):
     X_train, y_train, _, _ = dummy_titanic
 
@@ -321,7 +321,7 @@ def test_dt_functionality(dummy_titanic_dt, dummy_passengers):
     assert p2_cat_null_prob
 
 
-# Model evaluation
+# DecisionTree evaluation
 def test_dt_evaluation(dummy_titanic_dt, dummy_titanic):
     model = dummy_titanic_dt
     X_train, y_train, X_test, y_test = dummy_titanic
@@ -339,5 +339,5 @@ def test_dt_evaluation(dummy_titanic_dt, dummy_titanic):
     acc_test = accuracy_score(y_test, pred_test_binary)
     auc_test = roc_auc_score(y_test, pred_test)
 
-    assert acc_test > 0.83, 'Accuracy on train should be > 0.83'
-    assert auc_test > 0.84, 'AUC ROC on train should be > 0.84'
+    assert acc_test > 0.83, 'Accuracy on test should be > 0.83'
+    assert auc_test > 0.84, 'AUC ROC on test should be > 0.84'

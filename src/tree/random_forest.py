@@ -11,8 +11,9 @@ from src.utils.logger import logger
 
 class RandomForest(DecisionTree):
     """Class for RandomForest (of DecisionTrees)."""
+
     def __init__(self, num_trees: int, row_subsampling: float, col_subsampling: float,
-                 depth_limit: int = 99):
+                 depth_limit: int = 99, seed: int = 1368):
         """Initializes a decision tree with depth limit
 
         Args:
@@ -27,6 +28,7 @@ class RandomForest(DecisionTree):
         self.row_subsampling = row_subsampling
         self.col_subsampling = col_subsampling
         self.col_idxs: List[np.array] = []
+        np.random.seed(seed)
 
     def fit(self, features: np.array, labels: np.array) -> None:
         """Builds a random forest of decision trees.
