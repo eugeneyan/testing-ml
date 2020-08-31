@@ -10,12 +10,12 @@ clean-pyc:
 
 clean-test:
 	rm -f .coverage
-	rm -f .coverage.*
+	rm -f coverage.*
 
 clean: clean-pyc clean-test
 
 test: clean
-	poetry run py.test tests --cov-config=.coveragerc --cov=src  --cov-report=term-missing
+	poetry run py.test tests --cov-config=.coveragerc --cov=src --cov-report xml
 
 mypy:
 	poetry run mypy src
