@@ -353,4 +353,4 @@ def test_dt_latency(dummy_titanic):
 
     latency_array = np.array([predict_with_time(dt, X_test)[1] for i in range(500)])
     latency_p99 = np.quantile(latency_array, 0.99)
-    assert latency_p99 < 0.002, 'Latency at 99th percentile should be < 0.002 sec'
+    assert latency_p99 < 0.003, 'Latency at 99th percentile should be < 0.003 sec'
