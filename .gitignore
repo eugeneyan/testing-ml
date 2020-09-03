@@ -3,3 +3,6 @@
 .ipynb_checkpoints/
 notebooks/
 readme.txt
+*.pyc
+.coverage
+coverage.xml

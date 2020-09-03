@@ -4,6 +4,7 @@ from sklearn.metrics import accuracy_score, roc_auc_score
 
 from src.tree.random_forest import RandomForest, DecisionTree
 from tests.tree.test_decision_tree import dummy_titanic, dummy_feats_and_labels
+from src.utils.timer import predict_with_time
 
 
 @pytest.fixture
@@ -85,3 +86,15 @@ def test_dt_evaluation(dummy_titanic_rf, dummy_titanic):
 
     assert acc_test > 0.85, 'Accuracy on test should be > 0.83'
     assert auc_test > 0.86, 'AUC ROC on test should be > 0.86'
+
+
+def test_dt_latency(dummy_titanic):
+    X_train, y_train, X_test, y_test = dummy_titanic
+
+    # Standardize to use depth = 10
+    rf = RandomForest(depth_limit=10, num_trees=5, col_subsampling=0.8, row_subsampling=0.8)
+    rf.fit(X_train, y_train)
+
+    latency_array = np.array([predict_with_time(rf, X_test)[1] for i in range(500)])
+    latency_p99 = np.quantile(latency_array, 0.99)
+    assert latency_p99 < 0.01, 'Latency at 99th percentile should be < 0.01 sec'
