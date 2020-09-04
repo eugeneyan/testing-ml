@@ -4,7 +4,7 @@ from sklearn.metrics import accuracy_score, roc_auc_score
 
 from src.tree.random_forest import RandomForest, DecisionTree
 from tests.tree.test_decision_tree import dummy_titanic, dummy_feats_and_labels
-from src.utils.timer import predict_with_time
+from src.utils.timer import predict_with_time, train_with_time
 
 
 @pytest.fixture
@@ -88,7 +88,17 @@ def test_dt_evaluation(dummy_titanic_rf, dummy_titanic):
     assert auc_test > 0.86, 'AUC ROC on test should be > 0.86'
 
 
-def test_dt_latency(dummy_titanic):
+def test_rf_training_time(dummy_titanic):
+    X_train, y_train, X_test, y_test = dummy_titanic
+
+    # Standardize to use depth = 10
+    rf = RandomForest(depth_limit=10, num_trees=5, col_subsampling=0.8, row_subsampling=0.8)
+    latency_array = np.array([train_with_time(rf, X_train, y_train)[1] for i in range(20)])
+    time_p95 = np.quantile(latency_array, 0.95)
+    assert time_p95 < 3, 'Training time at 95th percentile should be < 3.0 sec'
+
+
+def test_rf_serving_latency(dummy_titanic):
     X_train, y_train, X_test, y_test = dummy_titanic
 
     # Standardize to use depth = 10
@@ -97,4 +107,4 @@ def test_dt_latency(dummy_titanic):
 
     latency_array = np.array([predict_with_time(rf, X_test)[1] for i in range(500)])
     latency_p99 = np.quantile(latency_array, 0.99)
-    assert latency_p99 < 0.018, 'Latency at 99th percentile should be < 0.018 sec'
+    assert latency_p99 < 0.018, 'Serving latency at 99th percentile should be < 0.018 sec'

@@ -31,6 +31,20 @@ def timer(func: Callable) -> Callable:
 
 
 @timer
+def train_with_time(model, X_train: np.array, y_train: np.array) -> Tuple:
+    """Returns trained model with the time
+
+    Args:
+        model: Model to test latency on
+        X_test: Input data
+
+    Returns:
+        Predicted values and time taken to predict it
+    """
+    return model.fit(X_train, y_train)
+
+
+@timer
 def predict_with_time(model, X_test: np.array) -> Tuple[np.array]:
     """Returns model output with the time
 
