@@ -31,7 +31,7 @@ def timer(func: Callable) -> Callable:
 
 
 @timer
-def train_with_time(model, X_train: np.array, y_train: np.array) -> Tuple:
+def fit_with_time(model, X_train: np.array, y_train: np.array) -> Tuple:
     """Returns trained model with the time
 
     Args:
