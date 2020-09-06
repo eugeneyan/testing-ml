@@ -35,6 +35,15 @@ def dummy_titanic():
 
 
 @pytest.fixture
+def dummy_titanic_df():
+    df = load_df()
+    df.columns = [col.lower() for col in df.columns]
+
+    train, test = split_df(df)
+    return train, test
+
+
+@pytest.fixture
 def dummy_passengers():
     # Based on passenger 1 (low passenger class male)
     passenger1 = {'PassengerId': 1,

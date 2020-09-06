@@ -1,8 +1,9 @@
 import numpy as np
+import pandas as pd
 from sklearn.metrics import accuracy_score, roc_auc_score
 
 from src.tree.decision_tree import gini_gain, gini_impurity, DecisionTree
-from tests.tree.fixtures import dummy_feats_and_labels, dummy_titanic
+from tests.tree.fixtures import dummy_feats_and_labels, dummy_titanic, dummy_titanic_df
 
 
 def test_gini_impurity():
@@ -96,3 +97,13 @@ def test_dt_increase_acc(dummy_titanic):
 
     assert sorted(acc_list) == acc_list, 'Accuracy should increase as tree depth increases.'
     assert sorted(auc_list) == auc_list, 'AUC ROC should increase as tree depth increases.'
+
+
+# Check if any records in our test set are also in our train set
+def test_data_leak_in_test_data(dummy_titanic_df):
+    train, test = dummy_titanic_df
+
+    concat_df = pd.concat([train, test])
+    concat_df.drop_duplicates(inplace=True)
+
+    assert concat_df.shape[0] == train.shape[0] + test.shape[0]

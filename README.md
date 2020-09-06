@@ -14,7 +14,7 @@ Accompanying article: [How to Test Machine Learning Code and Systems](https://eu
 ## Quick Start
 ```
 # Clone and setup environment
-git clone git@github.com:eugeneyan/testing-ml.git
+git clone https://github.com/eugeneyan/testing-ml.git
 cd testing-ml
 make setup
 
@@ -59,6 +59,18 @@ def test_dt_output_shape(dummy_titanic):
 
     assert pred_train.shape == (X_train.shape[0],), 'DecisionTree output should be same as training labels.'
     assert pred_test.shape == (X_test.shape[0],), 'DecisionTree output should be same as testing labels.'
+```
+
+- Test [data leak](https://github.com/eugeneyan/testing-ml/blob/master/tests/tree/test_decision_tree_1pre.py#103) between train and test set
+
+```
+def test_data_leak_in_test_data(dummy_titanic_df):
+    train, test = dummy_titanic_df
+
+    concat_df = pd.concat([train, test])
+    concat_df.drop_duplicates(inplace=True)
+
+    assert concat_df.shape[0] == train.shape[0] + test.shape[0]
 ```
 
 - Test [output range](https://github.com/eugeneyan/testing-ml/blob/master/tests/tree/test_decision_tree_1pre.py#L44)
