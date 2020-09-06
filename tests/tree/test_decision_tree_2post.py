@@ -1,7 +1,7 @@
 import pandas as pd
 
 from src.data_prep.prep_titanic import prep_df, get_feats_and_labels
-from tests.tree.test_fixtures import dummy_titanic_dt, dummy_passengers, dummy_titanic
+from tests.tree.fixtures import dummy_titanic_dt, dummy_passengers, dummy_titanic
 
 
 # Check if changing certain inputs will keep outputs constant

@@ -3,7 +3,7 @@ from sklearn.metrics import accuracy_score, roc_auc_score
 
 from src.tree.random_forest import RandomForest
 from src.utils.timer import predict_with_time, fit_with_time
-from tests.tree.test_fixtures import dummy_titanic_rf, dummy_titanic
+from tests.tree.fixtures import dummy_titanic_rf, dummy_titanic
 
 
 # RandomForest evaluation

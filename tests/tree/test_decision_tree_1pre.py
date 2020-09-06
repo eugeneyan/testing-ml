@@ -2,7 +2,7 @@ import numpy as np
 from sklearn.metrics import accuracy_score, roc_auc_score
 
 from src.tree.decision_tree import gini_gain, gini_impurity, DecisionTree
-from tests.tree.test_fixtures import dummy_feats_and_labels, dummy_titanic
+from tests.tree.fixtures import dummy_feats_and_labels, dummy_titanic
 
 
 def test_gini_impurity():
@@ -85,8 +85,7 @@ def test_dt_overfit(dummy_feats_and_labels, dummy_titanic):
 def test_dt_increase_acc(dummy_titanic):
     X_train, y_train, _, _ = dummy_titanic
 
-    acc_list = []
-    auc_list = []
+    acc_list, auc_list = [], []
     for depth in range(1, 10):
         dt = DecisionTree(depth_limit=depth)
         dt.fit(X_train, y_train)
