@@ -3,7 +3,7 @@ from sklearn.metrics import accuracy_score, roc_auc_score
 
 from src.tree.decision_tree import DecisionTree
 from src.utils.timer import fit_with_time, predict_with_time
-from tests.tree.test_fixtures import dummy_titanic_dt, dummy_titanic
+from tests.tree.fixtures import dummy_titanic_dt, dummy_titanic
 
 
 # DecisionTree evaluation

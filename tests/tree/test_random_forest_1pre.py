@@ -2,7 +2,7 @@ import numpy as np
 from sklearn.metrics import accuracy_score, roc_auc_score
 
 from src.tree.random_forest import RandomForest, DecisionTree
-from tests.tree.test_fixtures import dummy_feats_and_labels, dummy_titanic
+from tests.tree.fixtures import dummy_feats_and_labels, dummy_titanic
 
 
 # Check if model can overfit perfectly
@@ -15,10 +15,10 @@ def test_rf_overfit(dummy_feats_and_labels):
 
 
 # Check if additional bagged trees increases accuracy and AUC ROC
-def test_dt_increase_acc(dummy_titanic):
+def test_rf_increase_acc(dummy_titanic):
     X_train, y_train, X_test, y_test = dummy_titanic
 
-    acc_list = []
+    acc_list, acc_list = [], []
     auc_list = []
     for num_trees in [1, 3, 7, 15]:
         rf = RandomForest(num_trees=num_trees, depth_limit=7, col_subsampling=0.7, row_subsampling=0.7)
