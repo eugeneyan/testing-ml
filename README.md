@@ -3,9 +3,9 @@
 ![Tests](https://github.com/eugeneyan/testing-ml/workflows/Tests/badge.svg?branch=master) [![codecov](https://codecov.io/gh/eugeneyan/testing-ml/branch/master/graph/badge.svg)](https://codecov.io/gh/eugeneyan/testing-ml) [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/eugeneyan/testing-ml/pulls)
 
 How to test machine learning code. In this example, we'll test a `numpy` implementation of `DecisionTree` and `RandomForest` via:  
-- [Pre-train tests](https://github.com/eugeneyan/testing-ml/blob/master/tests/tree/test_decision_tree_1pre.py) to ensure correct implementation  
-- [Post-train tests](https://github.com/eugeneyan/testing-ml/blob/master/tests/tree/test_decision_tree_2post.py) to ensure expected learned behaviour  
-- [Evaluation](https://github.com/eugeneyan/testing-ml/blob/master/tests/tree/test_decision_tree_3eval.py) to ensure satisfactory model performance 
+- [Pre-train tests](#pre-train-tests-to-ensure-correct-implementation) to ensure correct implementation  
+- [Post-train tests](#post-train-tests-to-ensure-expected-learned-behaviour) to ensure expected learned behaviour  
+- [Evaluation](#evaluation-to-ensure-satisfactory-model-performance) to ensure satisfactory model performance 
 
 ![](https://raw.githubusercontent.com/eugeneyan/testing-ml/master/testing-ml-flow.png)
 
@@ -24,7 +24,7 @@ make check
 
 ## Standard software habits
 - Unit test [fixture reuse](https://github.com/eugeneyan/testing-ml/blob/master/tests/tree/fixtures.py), [exceptions testing](https://github.com/eugeneyan/testing-ml/blob/master/tests/data_prep/test_continuous.py#L44) with [`pytest`](https://docs.pytest.org/en/latest/)
-- [Code coverage](https://github.com/eugeneyan/testing-ml/blob/master/Makefile#L17) with [`Coverage.py`]((https://coverage.readthedocs.io/en/coverage-5.2.1/)) and [`pytest-cov`]((https://pytest-cov.readthedocs.io/en/latest/))
+- [Code coverage](https://github.com/eugeneyan/testing-ml/blob/master/Makefile#L17) with [`Coverage.py`](https://coverage.readthedocs.io/en/coverage-5.2.1/) and [`pytest-cov`](https://pytest-cov.readthedocs.io/en/latest/)
 - [Linting](https://github.com/eugeneyan/testing-ml/blob/master/Makefile#L23) to ensure code consistency with [`pylint`](https://www.pylint.org)
 - [Type checks](https://github.com/eugeneyan/testing-ml/blob/master/Makefile#L20) to verify type correctness with [`mypy`](http://mypy-lang.org)
 
